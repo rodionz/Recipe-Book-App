@@ -18,4 +18,8 @@ private recipes : Recipe[] = [
     getRecipes(){
       return this.recipes;
     }
+
+    getRecipe(id: number){
+      return this.recipes[id];
+    }
 }
