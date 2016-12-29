@@ -9,10 +9,11 @@ import {Recipe} from '../recipe';
 export class RecepeItemComponent implements OnInit {
 
 @Input() recipe : Recipe;
-recipeId : number;
-  constructor() { }
+@Input() recipeId : number;
 
-  ngOnInit() {
-  }
 
+
+     ngOnInit() {
+        
+    }
 }
