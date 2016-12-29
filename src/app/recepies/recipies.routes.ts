@@ -8,7 +8,7 @@ export const RECIPE_ROUTES : Routes = [
 {path: '', component: RecipieStartComponent},
 {path: 'new', component: RecipeEditComponent},
 {path: ':id', component: RecipeDetailComponent},
-{path: ':id/edit', component: RecipeDetailComponent}
+{path: ':id/edit', component: RecipeEditComponent}
 
 
 ];

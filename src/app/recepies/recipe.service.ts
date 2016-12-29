@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Recipe} from './recipe';
+import { Recipe } from './recipe';
 import {Ingredient} from '../shared/ingredient';
 
 @Injectable()
@@ -21,5 +21,8 @@ private recipes : Recipe[] = [
 
     getRecipe(id: number){
       return this.recipes[id];
+    }
+    deleteRecipe(recipe: Recipe){
+      this.recipes.splice(this.recipes.indexOf(recipe),1);
     }
 }

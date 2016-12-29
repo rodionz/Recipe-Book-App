@@ -20,8 +20,6 @@ recipes: Recipe[] = [];
     this.recipes = this.recipeService.getRecipes();
   }
 
-onSelected(recipe: Recipe) {
 
-}
 
 }
