@@ -1,15 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'rb-recipe-edit',
   templateUrl: './recipe-edit.component.html'
  
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, OnDestroy {
+private subscription : Subscription;
+private recipeIndex: number;
 
-  constructor() { }
+  constructor(private route : ActivatedRoute, private recipeService : RecipeService) { }
 
   ngOnInit() {
+    let isNew = true;
+    this.subscription = this.route.params.subscribe(
+  (params: any) => {
+     
+     if(params.hasOwnProperty('id')){
+       isNew = false;
+       this.recipeIndex = +params['id'];
+     }
+     else{
+       isNew = true;
+     }
   }
+      
+    );
+  }
+
+     ngOnDestroy(){
+     this.subscription.unsubscribe();
+    }
 
 }
