@@ -35,6 +35,7 @@ recipeForm: FormGroup;
        this.isNew = true;
        this.recipe = null;
      }
+     this.initForm();
   }
       
     );
@@ -44,7 +45,7 @@ recipeForm: FormGroup;
      this.subscription.unsubscribe();
     }
 
-   private initForm(isNew : boolean) {
+   private initForm() {
       
       let recipeName = '';
       let recipeImageUrl = '';
