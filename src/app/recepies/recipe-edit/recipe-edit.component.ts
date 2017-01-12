@@ -2,7 +2,7 @@ import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/
 import { FormArray } from '@angular/forms/src/model';
 import { Recipe } from '../recipe';
 import { Subscription } from 'rxjs/Rx';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 
@@ -18,8 +18,11 @@ private recipe: Recipe;
 private isNew = true;
 recipeForm: FormGroup;
 
-  constructor(private route : ActivatedRoute, private recipeService : RecipeService,
-  private formBuilder : FormBuilder) { }
+  
+  constructor(private route: ActivatedRoute,
+              private recipeService: RecipeService,
+              private formBuilder: FormBuilder,
+              private router: Router) {}
 
   ngOnInit() {
     
@@ -41,9 +44,45 @@ recipeForm: FormGroup;
     );
   }
 
+  onSubmit() {
+    const newRecipe = this.recipeForm.value;
+    if (this.isNew) {
+      this.recipeService.addRecipe(newRecipe);
+    } else {
+      this.recipeService.editRecipe(this.recipe, newRecipe);
+    }
+    this.navigateBack();
+  }
+
+onCancel(){
+  this.navigateBack();
+}
+
+  onAddItem(name: string, amount: string) {
+    (<FormArray>this.recipeForm.controls['ingredients']).push(
+      new FormGroup({
+        name: new FormControl(name, Validators.required),
+        amount: new FormControl(amount, [
+          Validators.required,
+          Validators.pattern("\\d+")
+        ])
+      })
+    );
+  }
+
+  onRemoveItem(index: number) {
+    (<FormArray>this.recipeForm.controls['ingredients']).removeAt(index);
+  }
+
      ngOnDestroy(){
      this.subscription.unsubscribe();
     }
+
+
+  private navigateBack() {
+    this.router.navigate(['../']);
+  }
+
 
    private initForm() {
       
