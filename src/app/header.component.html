@@ -15,13 +15,19 @@
       <ul class="nav navbar-nav navbar-right">
         
         <li class="dropdown" rbDropdown >
-          <a href="#" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
+          <a 
+           class="dropdown-toggle"
+            role="button"
+             aria-haspopup="true"
+              aria-expanded="false"
+              
+              >
+              Recipie Managment<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Another action</a></li>
+            <li><a (click)="onStore()">Store Recipies</a></li>
+            <li><a (click)="onFetch()"> Retrieve Recipies</a></li>
             
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
+           
           </ul>
         </li>
       </ul>
