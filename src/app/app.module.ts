@@ -30,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ShoppingListAddComponent,
     DropdownDirective,
     RecipeEditComponent,
-    RecipieStartComponent,
+    RecipieStartComponent
+   
     
   
     
@@ -40,7 +41,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpModule,
     routing,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
 
   ],
   providers: [ShoppingListService],

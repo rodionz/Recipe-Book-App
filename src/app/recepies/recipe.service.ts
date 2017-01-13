@@ -42,7 +42,7 @@ private recipes : Recipe[] = [
     'Content-type': 'application/json'
     
    });
-this.http.post('https://recipe-app-44967.firebaseio.com/recipes.json', body,{headers: headers})
+  return this.http.post('https://recipe-app-44967.firebaseio.com/recipes.json', body,{headers: headers})
   }
 
   fetchData(){
